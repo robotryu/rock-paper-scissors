@@ -39,19 +39,25 @@ function playRound (playerSelection, computerSelection) {
   }
 }
 
-// 6.
-// all the playRound function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.all the playRound function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
+// Play a 5 round game that keeps score and reports a winner or loser at the end.
 function game() {
-  let userScore;
-  let computerScore;
+  let userScore = 0;
+  let computerScore = 0;
 
   for (let i = 0; i < 5; i++) {
-    let result = playRound();
+    let result = playRound(playerPick(), getComputerChoice());;
     if (result === 'You Lose! Paper beats Rock') {
       computerScore++;
     } else if (result === 'You Win! Rock beats Scissors') {
       userScore++;
     }
+    // console.log(userScore);
+    // console.log(computerScore);
   }
-  return `Your final score is: ${userScore} the computer final score is: ${computerScore}.`;
+  if (userScore > computerScore) {
+    return `You won final score is ${userScore} x ${computerScore}`;
+  } else if (userScore < computerScore) {
+    return `You lost final score is ${userScore} x ${computerScore}`;
+  }
+  return `It's a draw final score is ${userScore} x ${computerScore}.`;
 }
